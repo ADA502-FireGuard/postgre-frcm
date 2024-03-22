@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  postgres:
+    image: postgres:16.2-bullseye
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: admin
+      POSTGRES_DB: firerisk
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - firerisk
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8888:8080
+    networks:
+    - firerisk
+
+networks:
+  firerisk:
+    driver: bridge
