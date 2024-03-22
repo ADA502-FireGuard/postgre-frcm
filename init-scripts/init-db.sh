@@ -15,7 +15,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
 		Lat FLOAT NOT NULL,
 		Timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		Source TEXT,
-		ExpirationDate DATE,
+		ExpirationDate TIMESTAMP DEFAULT (CURRENT_TIMESTAMP + INTERVAL '1 hour'),
 		TimeToUpdate INTERVAL,
 		NumberOfRequests INTEGER
 	);
