@@ -8,14 +8,14 @@ services:
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: admin
-      POSTGRES_DB: firerisk
+      POSTGRES_DB: fireriskdb
     ports:
       - 5432:5432
     volumes:
       - ./data:/var/lib/postgresql/data
-      - ./init-scripts:/docker-entrypoint-initdb.d
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - firerisk
+      - firerisk-nework
 
   adminer:
     image: adminer
@@ -23,8 +23,8 @@ services:
     ports:
       - 8888:8080
     networks:
-    - firerisk
+    - firerisk-nework
 
 networks:
-  firerisk:
+  firerisk-nework:
     driver: bridge
