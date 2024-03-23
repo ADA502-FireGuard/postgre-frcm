@@ -1,9 +1,7 @@
 version: '3.3'
 services:
   postgres:
-    build: 
-      context: .
-      dockerfile: Dockerfile
+    image: postgres:16.2-bullseye
     restart: always
     environment:
       POSTGRES_PASSWORD: password
@@ -15,7 +13,7 @@ services:
       - ./data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - firerisk-nework
+      - firerisk-network
 
   adminer:
     image: adminer
@@ -23,8 +21,16 @@ services:
     ports:
       - 8888:8080
     networks:
-    - firerisk-nework
+    - firerisk-network
+
+  cron:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - firerisk-network
 
 networks:
-  firerisk-nework:
+  firerisk-network:
     driver: bridge
