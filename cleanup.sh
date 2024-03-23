@@ -4,4 +4,5 @@
 export PGPASSWORD=password
 
 # Connect to the PostgreSQL database and execute the cleanup SQL query
-psql -h postgres-frcm_postgres_1 -U admin -d firerisk -c "DELETE FROM fireriskdata WHERE Timestamp >= ExpirationDate;"
+psql -h postgres-frcm_postgres_1 -U admin -d fireriskdb \
+-c "DELETE FROM fireriskdata WHERE CURRENT_TIMESTAMP >= ExpirationDate;"
