@@ -1,5 +1,5 @@
 # postgres-frcm
-FireRisk PostgreSQL DB in with Adminer and cron docker containers
+FireRisk PostgreSQL DB in with Adminer and cron docker containers.
 
 [![asciicast](https://asciinema.org/a/Tj6yaKyhoSi8CoJ3zvzT26ZsH.svg)](https://asciinema.org/a/Tj6yaKyhoSi8CoJ3zvzT26ZsH)
 
